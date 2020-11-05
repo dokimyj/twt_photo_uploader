@@ -1,4 +1,4 @@
-# Photographes
+# Photograph
 
 - Inori Minase, a voice actress of Japan
 - All rights reserved by Inori Minase, will be deleted if there is any claim.
