@@ -27,5 +27,7 @@ jobs:
         ruby-version: 2.7
     - name: Install dependencies
       run: gem install twurl
+    - name: Authenticate with Twitter
+      run: twurl authorize --consumer-key ${{ secrets.API_KEY }} --consumer-secret ${{ secrets.API_SECRET }}
     - name: Run main
       run: ruby main.rb
