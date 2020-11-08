@@ -32,7 +32,7 @@ jobs:
         echo '---' >> ~/.twurlrc
         echo 'profile' >> ~/.twurlrc
         echo '  dokimuki:' >> ~/.twurlrc
-        echo '    '${{ secrets.API_KEY }} >> ~/.twurlrc
+        echo '    4W1WOOfwiZbVM3Cf1gKZkX8HI:' >> ~/.twurlrc
         echo '      username: dokimuki' >> ~/.twurlrc
         echo '      consumer_key: '${{ secrets.API_KEY }} >> ~/.twurlrc
         echo '      consumer_secret: '${{ secrets.API_SECRET }} >> ~/.twurlrc
