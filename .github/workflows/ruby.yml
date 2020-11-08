@@ -28,6 +28,10 @@ jobs:
     - name: Install dependencies
       run: gem install twurl
     - name: Authenticate with Twitter
-      run: cp ./.twurlrc ~/.twurlrc
+      run: |
+        export API_KEY=${{ secrets.API_KEY }}
+        export API_SECRET=${{ secrets.API_SECRET }}
+        export ACCESS_TOKEN=${{ secrets.ACCESS_TOKEN }}
+        export ACCESS_SECRET=${{ secrets.ACCESS_SECRET }}
     - name: Run main
       run: ruby main.rb
