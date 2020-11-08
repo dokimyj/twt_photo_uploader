@@ -1,7 +1,7 @@
 ---
 profiles:
   dokimuki:
-    ${{ secrets.API_KEY }}:
+    4W1WOOfwiZbVM3Cf1gKZkX8HI:
       username: dokimuki
       consumer_key: ${{ secrets.API_KEY }}
       consumer_secret: ${{ secrets.API_SECRET }}
@@ -10,4 +10,4 @@ profiles:
 configuration:
   default_profile:
   - dokimuki
-  - ${{ secrets.API_KEY }}
+  - 4W1WOOfwiZbVM3Cf1gKZkX8HI
