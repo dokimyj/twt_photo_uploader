@@ -5,7 +5,7 @@ uploaded_images = ''
 
 4.times do
   filename = Random.rand(1909)
-  ext += filename > 129 ? 'jpg' : 'png'
+  ext = filename > 129 ? 'jpg' : 'png'
   filename = "#{filename}.#{ext}"
   filepath = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/photos/#{filename}"
   system("curl -o #{filename}.#{ext} #{filepath}")
