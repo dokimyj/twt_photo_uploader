@@ -29,10 +29,18 @@ jobs:
       run: gem install twurl
     - name: Authenticate with Twitter
       run: |
-        export API_KEY=${{ secrets.API_KEY }}
-        export API_SECRET=${{ secrets.API_SECRET }}
-        export ACCESS_TOKEN=${{ secrets.ACCESS_TOKEN }}
-        export ACCESS_SECRET=${{ secrets.ACCESS_SECRET }}
-        cp ./.twurlrc ~/.twurlrc
+        echo '---' >> ~/.twurlrc
+        echo 'profile' >> ~/.twurlrc
+        echo '  dokimuki:' >> ~/.twurlrc
+        echo '    '${{ secrets.API_KEY }} >> ~/.twurlrc
+        echo '      username: dokimuki' >> ~/.twurlrc
+        echo '      consumer_key: '${{ secrets.API_KEY }} >> ~/.twurlrc
+        echo '      consumer_secret: '${{ secrets.API_SECRET }} >> ~/.twurlrc
+        echo '      token: '${{ secrets.ACCESS_TOKEN }} >> ~/.twurlrc
+        echo '      secret: '${{ secrets.ACCESS_SECRET }} >> ~/.twurlrc
+        echo 'configuration:' >> ~/.twurlrc
+        echo '  default_profile:' >> ~/.twurlrc
+        echo '  - dokimuki' >> ~/.twurlrc
+        echo '  - 4W1WOOfwiZbVM3Cf1gKZkX8HI' >> ~/.twurlrc
     - name: Run main
       run: ruby main.rb
