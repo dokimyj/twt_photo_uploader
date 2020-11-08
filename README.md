@@ -13,5 +13,6 @@ let me check how to use GHA...
 
 # Frequency
 - As I use Free Plan for Github Actions, the limitation would be resolved with the plan.
-- Free Plan = 2000 Minutes/mth
-- 24*2*30 = 1440, 2000/1440 = 1.3888888... -> Goal = Set everything up in 1m 20s, every 30 mins.
+- Free Plan = 2000 Minutes/mth, 500MB of action space
+- Photos are almost 450MB now, pretty sure no more photos will be uploaded.
+- 24*2*30 = 1440, 2000/1440 = 1.3888888... -> Goal = Set everything up in 30s, every 15 mins.
