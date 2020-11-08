@@ -3,10 +3,10 @@ profiles:
   dokimuki:
     4W1WOOfwiZbVM3Cf1gKZkX8HI:
       username: dokimuki
-      consumer_key: $API_KEY
-      consumer_secret: $API_SECRET
-      token: $ACCESS_TOKEN
-      secret: $ACCESS_SECRET
+      consumer_key: 4W1WOOfwiZbVM3Cf1gKZkX8HI
+      consumer_secret: nFYw4c6JgHhW4DomtC7yYGkXUKzcR4on8Hy2JxHO9xXJgT0FoQ
+      token: 1289528648907673600-4XWfXOs6U5ceFowKsyCN9aADIQyXQz
+      secret: L26dKCe0uIq2QaGGMlm32qqeptTruTkVtKmH6T5jGviMd
 configuration:
   default_profile:
   - dokimuki
