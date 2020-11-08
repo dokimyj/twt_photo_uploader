@@ -33,5 +33,6 @@ jobs:
         export API_SECRET=${{ secrets.API_SECRET }}
         export ACCESS_TOKEN=${{ secrets.ACCESS_TOKEN }}
         export ACCESS_SECRET=${{ secrets.ACCESS_SECRET }}
+        cp ./.twurlrc ~/.twurlrc
     - name: Run main
       run: ruby main.rb
