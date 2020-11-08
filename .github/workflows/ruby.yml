@@ -28,6 +28,6 @@ jobs:
     - name: Install dependencies
       run: gem install twurl
     - name: Authenticate with Twitter
-      run: twurl authorize --consumer-key ${{ secrets.API_KEY }} --consumer-secret ${{ secrets.API_SECRET }}
+      run: cp ./.twurlrc ~/.twurlrc
     - name: Run main
       run: ruby main.rb
