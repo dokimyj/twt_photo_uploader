@@ -25,22 +25,14 @@ jobs:
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
         ruby-version: 2.7
+      env:
+        API_KEY: ${{ secrets.API_KEY }}
+        API_SECRET: ${{ secrets.API_SECRET }}
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
     - name: Install dependencies
       run: gem install twurl
     - name: Authenticate with Twitter
-      run: |
-        echo '---' >> ~/.twurlrc
-        echo 'profile' >> ~/.twurlrc
-        echo '  dokimuki:' >> ~/.twurlrc
-        echo '    4W1WOOfwiZbVM3Cf1gKZkX8HI:' >> ~/.twurlrc
-        echo '      username: dokimuki' >> ~/.twurlrc
-        echo '      consumer_key: '${{ secrets.API_KEY }} >> ~/.twurlrc
-        echo '      consumer_secret: '${{ secrets.API_SECRET }} >> ~/.twurlrc
-        echo '      token: '${{ secrets.ACCESS_TOKEN }} >> ~/.twurlrc
-        echo '      secret: '${{ secrets.ACCESS_SECRET }} >> ~/.twurlrc
-        echo 'configuration:' >> ~/.twurlrc
-        echo '  default_profile:' >> ~/.twurlrc
-        echo '  - dokimuki' >> ~/.twurlrc
-        echo '  - 4W1WOOfwiZbVM3Cf1gKZkX8HI' >> ~/.twurlrc
+      run: cp ./.twurlrc ~/.twurlrc
     - name: Run main
       run: ruby main.rb
