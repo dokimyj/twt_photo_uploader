@@ -4,7 +4,7 @@ api_path = '/1.1/media/upload.json?media_category=TWEET_IMAGE'
 uploaded_images = ''
 
 4.times do
-  filename = Random.rand(entire_photos.length - 1)
+  filename = Random.rand(1909)
   ext = filename > 129 ? 'jpg' : 'png'
   filepath = "./photos/#{filename}.#{ext}"
   json_result = `twurl -X POST -H upload.twitter.com '#{api_path}' -f #{filepath} -F media`
