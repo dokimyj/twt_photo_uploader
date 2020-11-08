@@ -33,6 +33,6 @@ jobs:
         API_SECRET: ${{ secrets.API_SECRET }}
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
-      run: cp ./.twurlrc ~/.twurlrc
+      run: cat ./.twurlrc > ~/.twurlrc
     - name: Run main
       run: ruby main.rb

@@ -1,7 +1,7 @@
 require 'json'
 
 entire_photos = Dir.glob('./photos/*.png').push(Dir.glob('./photos/*.jpg')).flatten.uniq
-system ('cat ~/.twurlrc')
+
 uploaded_images = ''
 4.times do
   json_result = `twurl -X POST -H upload.twitter.com '/1.1/media/upload.json?media_category=TWEET_IMAGE' -f #{entire_photos[Random.rand(entire_photos.length - 1)]} -F media`
