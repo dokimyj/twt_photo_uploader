@@ -7,7 +7,7 @@ media_ids = ''
 4.times do
   filename = Random.rand(1909)
   ext = filename > 129 ? 'jpg' : 'png'
-  uploaded_images << "#{filename}.#{ext}"
+  uploaded_images.push("#{filename}.#{ext}")
 end
 
 puts uploaded_images
