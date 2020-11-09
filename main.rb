@@ -15,6 +15,8 @@ puts uploaded_images
 uploaded_images.uniq.each do |image|
   filepath = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/photos/#{image}"
   system("curl -o #{image} #{filepath}")
+  puts Dir.glob('*.jpg')
+  puts Dir.glob('*.png')
   json_result = `twurl -X POST -H upload.twitter.com '#{api_path}' -f ./#{image} -F media`
   puts json_result
   media_id = JSON.parse(json_result)['media_id']
