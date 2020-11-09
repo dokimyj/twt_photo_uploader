@@ -11,6 +11,7 @@ uploaded_images = ''
   system("curl -o #{filename} #{filepath}")
   json_result = `twurl -X POST -H upload.twitter.com '#{api_path}' -f #{filename} -F media`
   media_id = JSON.parse(json_result)['media_id']
+  puts "Is #{filename} invalid? #{media_id}"
   uploaded_images << "#{media_id},"
 end
 
