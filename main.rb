@@ -11,7 +11,7 @@ uploaded_images = ''
   system("curl -o #{filename} #{filepath}")
   json_result = `twurl -X POST -H upload.twitter.com '#{api_path}' -f #{filename} -F media`
   media_id = JSON.parse(json_result)['media_id']
-  media_id = "#{media_id}," if !media_id.empty?
+  media_id = "#{media_id}," if !media_id.to_s.empty?
   uploaded_images << "#{media_id}"
 end
 
