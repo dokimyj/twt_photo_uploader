@@ -5,7 +5,7 @@ uploaded_images = ''
 
 4.times do
   filename = Random.rand(1952)
-  filename = "#{filename}.jpg
+  filename = "#{filename}.jpg"
   filepath = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/photos/#{filename}"
   system("curl -o #{filename} #{filepath}")
   json_result = `twurl -X POST -H upload.twitter.com '#{api_path}' -f #{filename} -F media`
