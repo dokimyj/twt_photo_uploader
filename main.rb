@@ -4,7 +4,7 @@ api_path = '/1.1/media/upload.json?media_category=TWEET_IMAGE'
 uploaded_images = ''
 
 4.times do
-  filename = Random.rand(1956)
+  filename = Random.rand(0..1956)
   filename = "#{filename}.jpg"
   filepath = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/photos/#{filename}"
   system("curl -o #{filename} #{filepath}")
