@@ -4,9 +4,9 @@ api_path = '/1.1/media/upload.json?media_category=TWEET_IMAGE'
 uploaded_images = ''
 
 4.times do
-  filename = Random.rand(0..1956)
+  filename = Random.rand(0..1849)
   filename = "#{filename}.jpg"
-  filepath = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/photos/#{filename}"
+  filepath = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/photos/jpgs/#{filename}"
   system("curl -o #{filename} #{filepath}")
   json_result = `twurl -X POST -H upload.twitter.com '#{api_path}' -f #{filename} -F media`
   media_id = JSON.parse(json_result)['media_id']
