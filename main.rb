@@ -14,13 +14,13 @@ def upload_img(max_num, ext)
 end
 
 3.times do
-  upload_img(1849, 'jpg')
+  upload_img(1898, 'jpg')
 end
 
 if Time.now.hour == 10 || Time.now.hour == 22
-  upload_img(137, 'png')
+  upload_img(140, 'png')
 else
-  upload_img(1849, 'jpg')
+  upload_img(1898, 'jpg')
 end
 
 system("twurl -d 'media_ids=#{$uploaded_images}' -d 'status=#水瀬いのり' /1.1/statuses/update.json")
