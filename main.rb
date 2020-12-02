@@ -17,15 +17,15 @@ def upload_img(max_num, ext)
   $uploaded_images << "#{media_id},"
 end
 
-3.times do
+4.times do
   upload_img(1899, 'jpg')
 end
 
-if Time.now.hour == 10 || Time.now.hour == 22
-  upload_img(141, 'png')
-else
-  upload_img(1899, 'jpg')
-end
+# if Time.now.hour == 10 || Time.now.hour == 22
+#   upload_img(141, 'png')
+# else
+#   upload_img(1899, 'jpg')
+# end
 
 status = '#水瀬いのり'
 
