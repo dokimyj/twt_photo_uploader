@@ -42,9 +42,9 @@ puts 'Uploaded_Images to pull'
 puts $uploaded_images
 
 command = 'twurl -d \'media_ids='
-command.append($uploaded_images)
-command.append('\' -d \'status=')
-command.append(status)
-command.append('\' /1.1/statuses/update.json')
+command.concat($uploaded_images)
+command.concat('\' -d \'status=')
+command.concat(status)
+command.concat('\' /1.1/statuses/update.json')
 
 system(command)
