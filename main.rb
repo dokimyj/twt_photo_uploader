@@ -17,6 +17,8 @@ end
   upload_img(1899, 'jpg')
 end
 
+sleep 5
+
 if Time.now.hour == 10 || Time.now.hour == 22
   upload_img(141, 'png')
 else
