@@ -47,4 +47,6 @@ command.concat('\' -d \'status=')
 command.concat(status)
 command.concat('\' /1.1/statuses/update.json')
 
+puts command
+
 system(command)
