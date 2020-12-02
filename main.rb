@@ -18,9 +18,18 @@ end
 end
 
 if Time.now.hour == 10 || Time.now.hour == 22
-  upload_img(140, 'png')
+  upload_img(139, 'png')
 else
-  upload_img(1898, 'jpg')
+  upload_img(1899, 'jpg')
 end
 
-system("twurl -d 'media_ids=#{$uploaded_images}' -d 'status=#水瀬いのり' /1.1/statuses/update.json")
+status = '#水瀬いのり'
+
+if Time.now.month == 12 && Time.now.day == 2 
+  status.concat(" #水瀬いのり生誕祭#{Time.now.year}") 
+  status.concat(" 大好きないのりちゃん！大切な Happy Birthday!") 
+  status.concat(" アーティストデビュー#{Time.now.year-2015}周年 & #{Time.now.year-1995}歳のお誕生日おめでとう！") 
+  status.concat(" 幸せな一日、素敵な#{Time.now.year-1995}歳の一年を過ごせますように") 
+end
+
+system("twurl -d 'media_ids=#{$uploaded_images}' -d 'status=#{status}' /1.1/statuses/update.json")
