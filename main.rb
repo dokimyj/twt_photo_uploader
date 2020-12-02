@@ -41,4 +41,10 @@ puts status
 puts 'Uploaded_Images to pull'
 puts $uploaded_images
 
-system("twurl -d 'media_ids=#{$uploaded_images}' -d 'status=#{status}' /1.1/statuses/update.json")
+command = 'twurl -d \'media_ids='
+command.append($uploaded_images)
+command.append('\' -d \'status=')
+command.append(status)
+command.append('\' /1.1/statuses/update.json')
+
+system(command)
