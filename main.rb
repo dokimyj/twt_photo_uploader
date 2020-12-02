@@ -8,8 +8,12 @@ def upload_img(max_num, ext)
   filename = "#{filename}.#{ext}"
   filepath = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/photos/#{ext}s/#{filename}"
   system("curl -o #{filename} #{filepath}")
+  puts 'File to Upload:'
+  puts filename
   json_result = `twurl -X POST -H upload.twitter.com '#{$api_path}' --file '#{filename}' --file-field 'media'`
+  puts json_result
   media_id = JSON.parse(json_result)['media_id']
+  puts media_id
   $uploaded_images << "#{media_id},"
 end
 
