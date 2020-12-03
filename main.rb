@@ -3,24 +3,27 @@ require 'json'
 $api_path = '/1.1/media/upload.json?media_category=TWEET_IMAGE'
 $uploaded_images = ''
 
-def upload_img(max_num, ext)
-  filename = Random.rand(0..max_num)
-  filename = "#{filename}.#{ext}"
-  filepath = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/photos/#{ext}s/#{filename}"
-  system("curl -o #{filename} #{filepath}")
+repo_json = JSON.parse(`curl -X GET -H "Content-Type:application/vnd.github.v3+json" https://api.github.com/repos/dokimyj/twt_photo_repo/git/trees/main?recursive=1`)
+$filepath = []
+repo_json['tree'].each do |t|
+  $filepath.push(t['path'])
+end
+
+def upload_img
+  file_index = Random.rand(0..$filepath.length - 1)
+  real_path = $filepath[file_index]
+  puts 'File Path to download'
+  puts real_path
+  filename = File.basename(real_path)
+  url = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/#{real_path}"
+  system("curl -o #{filename} #{url}") if filename.downcase.include?('.jpg') || filename.downcase.include?('.png')
   json_result = `twurl -X POST -H upload.twitter.com '#{$api_path}' --file '#{filename}' --file-field 'media'`
   media_id = JSON.parse(json_result)['media_id']
   $uploaded_images << "#{media_id},"
 end
 
-3.times do
-  upload_img(1899, 'jpg')
-end
-
-if Time.now.hour + 9 == 10 || Time.now.hour + 9 == 22
-  upload_img(141, 'png')
-else
-  upload_img(1899, 'jpg')
+while $uploaded_images.count(',') < 4 do
+  upload_img
 end
 
 status = '#水瀬いのり'
