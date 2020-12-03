@@ -13,7 +13,7 @@ def upload_img
   file_index = Random.rand(0..$filepath.length - 1)
   filename = File.basename($filepath[file_index])
   url = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/#{$filepath[file_index]}"
-  system("curl -o #{} #{url}") if $filepath[file_index].include?(/.jpg|.png/i)
+  system("curl -o #{} #{url}") if filename.downcase.include?('.jpg') || filename.downcase.include?('.png')
   json_result = `twurl -X POST -H upload.twitter.com '#{$api_path}' --file '#{filename}' --file-field 'media'`
   media_id = JSON.parse(json_result)['media_id']
   $uploaded_images << "#{media_id},"
