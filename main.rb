@@ -25,7 +25,7 @@ end
 
 status = '#水瀬いのり'
 
-if Time.now.month == 12 && Time.now.day.day >= 1 && Time.now.hour >= 15
+if Time.now.month == 12 && Time.now.day >= 1 && Time.now.hour >= 15
   if Time.now.day <= 2 && Time.now.hour < 15
     status.concat(" #水瀬いのり生誕祭#{Time.now.year}") 
     status.concat(" 大好きないのりちゃん！大切な Happy Birthday!") 
