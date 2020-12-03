@@ -19,7 +19,7 @@ def upload_img
   $uploaded_images << "#{media_id},"
 end
 
-while $uploaded_images.count(',') == 4 do
+while $uploaded_images.count(',') < 4 do
   upload_img
 end
 
