@@ -17,6 +17,7 @@ def upload_img
   system("curl -o '#{filename}' '#{url}'") if filename.downcase.include?('.jpg') || filename.downcase.include?('.png')
   puts Dir.glob('*')
   json_result = `twurl -X POST -H upload.twitter.com '#{$api_path}' --file '#{filename}' --file-field 'media'`
+  puts json_result
   media_id = JSON.parse(json_result)['media_id']
   $uploaded_images << "#{media_id},"
 end
