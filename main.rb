@@ -19,7 +19,7 @@ while $uploaded_images.count(',') < 4 do
   url = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/#{real_path}"
   system("curl -o '#{filename}' '#{url}'")
   puts Dir.glob('*')
-  json_result = `twurl -X POST -H upload.twitter.com '#{$api_path}' -f '#{filename}' -F 'media'`
+  json_result = `twurl -X POST -H upload.twitter.com '#{$api_path}' -f './#{filename}' -F 'media'`
   puts json_result
   media_id = JSON.parse(json_result)['media_id']
   $uploaded_images << "#{media_id},"
