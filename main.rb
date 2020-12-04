@@ -1,4 +1,5 @@
 require 'json'
+require 'cgi'
 
 $api_path = '/1.1/media/upload.json?media_category=TWEET_IMAGE'
 $uploaded_images = ''
@@ -16,7 +17,7 @@ def upload_img
   puts real_path
   filename = File.basename(real_path)
   url = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/#{real_path}"
-  system("curl -o #{filename} #{url}") if filename.downcase.include?('.jpg') || filename.downcase.include?('.png')
+  system("curl -o #{filename} #{CGI.escape(url)}") if filename.downcase.include?('.jpg') || filename.downcase.include?('.png')
   json_result = `twurl -X POST -H upload.twitter.com '#{$api_path}' --file '#{filename}' --file-field 'media'`
   media_id = JSON.parse(json_result)['media_id']
   $uploaded_images << "#{media_id},"
