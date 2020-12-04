@@ -9,22 +9,19 @@ repo_json['tree'].each do |t|
   $filepath.push(t['path'])
 end
 
-def upload_img
+while $uploaded_images.count(',') < 4 do
   file_index = Random.rand(0..$filepath.length - 1)
   real_path = $filepath[file_index]
   filename = File.basename(real_path)
+  next unless filename.downcase.include?('.jpg') || filename.downcase.include?('.png')
   url = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/#{real_path}"
-  system("curl -o '#{filename}' '#{url}'") if filename.downcase.include?('.jpg') || filename.downcase.include?('.png')
+  system("curl -o '#{filename}' '#{url}'")
   File.rename(filename, "#{file_index}.#{File.extname(filename).downcase}")
   filename = "#{file_index}.#{File.extname(filename).downcase}"
   json_result = `twurl -X POST -H upload.twitter.com '#{$api_path}' -f '#{filename}' -F 'media'`
   puts json_result
   media_id = JSON.parse(json_result)['media_id']
   $uploaded_images << "#{media_id},"
-end
-
-while $uploaded_images.count(',') < 4 do
-  upload_img
 end
 
 status = '#水瀬いのり'
