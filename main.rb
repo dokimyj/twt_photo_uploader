@@ -15,7 +15,8 @@ def upload_img
   filename = File.basename(real_path)
   url = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/#{real_path}"
   system("curl -o '#{filename}' '#{url}'") if filename.downcase.include?('.jpg') || filename.downcase.include?('.png')
-  puts Dir.glob('*')
+  File.rename(filename, "#{file_index}.#{File.extname(filename).downcase}")
+  filename = "#{file_index}.#{File.extname(filename).downcase}"
   json_result = `twurl -X POST -H upload.twitter.com '#{$api_path}' -f '#{filename}' -F 'media'`
   puts json_result
   media_id = JSON.parse(json_result)['media_id']
