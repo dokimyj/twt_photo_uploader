@@ -12,12 +12,13 @@ end
 while $uploaded_images.count(',') < 4 do
   file_index = Random.rand(0..$filepath.length - 1)
   real_path = $filepath[file_index]
+  puts real_path
   filename = File.basename(real_path)
+  puts filename
   next unless filename.downcase.include?('.jpg') || filename.downcase.include?('.png')
   url = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/#{real_path}"
   system("curl -o '#{filename}' '#{url}'")
-  File.rename(filename, "#{file_index}.#{File.extname(filename).downcase}")
-  filename = "#{file_index}.#{File.extname(filename).downcase}"
+  puts Dir.glob('*')
   json_result = `twurl -X POST -H upload.twitter.com '#{$api_path}' -f '#{filename}' -F 'media'`
   puts json_result
   media_id = JSON.parse(json_result)['media_id']
