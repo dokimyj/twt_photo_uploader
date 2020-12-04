@@ -1,6 +1,6 @@
 require 'json'
 
-$api_path = '/1.1/media/upload.json?media_category=TWEET_IMAGE'
+$api_path = '/1.1/media/upload.json'
 $uploaded_images = ''
 
 repo_json = JSON.parse(`curl -X GET -H "Content-Type:application/vnd.github.v3+json" https://api.github.com/repos/dokimyj/twt_photo_repo/git/trees/main?recursive=1`)
@@ -18,8 +18,7 @@ while $uploaded_images.count(',') < 4 do
   next unless filename.downcase.include?('.jpg') || filename.downcase.include?('.png')
   url = "https://raw.githubusercontent.com/dokimyj/twt_photo_repo/main/#{real_path}"
   system("curl -o '#{filename}' '#{url}'")
-  puts Dir.glob('*')
-  json_result = `twurl -X POST -H upload.twitter.com '#{$api_path}' -f './#{filename}' -F 'media'`
+  json_result = `twurl -X POST -H 'upload.twitter.com' '#{$api_path}' --file './#{filename}' --file-field 'media'`
   puts json_result
   media_id = JSON.parse(json_result)['media_id']
   $uploaded_images << "#{media_id},"
