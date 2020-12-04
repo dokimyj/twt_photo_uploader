@@ -22,7 +22,6 @@ while $uploaded_images.count(',') < 4 do
   puts json_result
   media_id = JSON.parse(json_result)['media_id']
   $uploaded_images << "#{media_id},"
-  sleep 5
 end
 
 status = '#水瀬いのり'
