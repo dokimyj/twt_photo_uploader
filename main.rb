@@ -1,6 +1,6 @@
 require 'json'
 
-$api_path = '/1.1/media/upload.json'
+$api_path = '/1.1/media/upload.json?media_category=TWEET_IMAGE'
 $uploaded_images = ''
 
 repo_json = JSON.parse(`curl -X GET -H "Content-Type:application/vnd.github.v3+json" https://api.github.com/repos/dokimyj/twt_photo_repo/git/trees/main?recursive=1`)
