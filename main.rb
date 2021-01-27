@@ -31,8 +31,8 @@ if Time.now.month == 12 && Time.now.day >= 1 && Time.now.hour >= 15
   if Time.now.day <= 2 && Time.now.hour < 15
     status.concat(" #水瀬いのり生誕祭#{Time.now.year}") 
     status.concat(" 大好きないのりちゃん！大切な Happy Birthday!") 
-    status.concat(" アーティストデビュー#{Time.now.year-2015}周年、 #{Time.now.year-1995}歳のお誕生日おめでとう！") 
-    status.concat(" 幸せな一日、素敵な#{Time.now.year-1995}歳の一年を過ごせますように。") 
+    status.concat(" アーティストデビュー#{Time.now.year-2015}周年、そして#{Time.now.year-1995}歳のお誕生日おめでとう！")
+    status.concat(" 幸せな一日、素敵な#{Time.now.year-1995}歳の一年を過ごせますように！") 
   end
 end
 
