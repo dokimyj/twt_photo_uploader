@@ -32,4 +32,4 @@ jobs:
         ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
       run: chmod 777 ./twurlrc.sh && /bin/bash -c ./twurlrc.sh
     - name: Run main
-      run: ruby main.rb
+      run: ruby main.rb && ruby project311.rb
